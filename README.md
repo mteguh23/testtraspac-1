@@ -7,6 +7,7 @@
 3. Run 'php artisan key:generate'
 4. Edit configuration in '.env' for database connection
 5. Run 'php artisan migrate:fresh --seed'
+6. Run 'php artisan serve'
 
 ## USER LOGIN
 <table>
