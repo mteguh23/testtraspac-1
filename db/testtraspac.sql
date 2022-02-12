@@ -11,7 +11,7 @@
  Target Server Version : 80027
  File Encoding         : 65001
 
- Date: 12/02/2022 04:18:50
+ Date: 12/02/2022 15:22:19
 */
 
 SET NAMES utf8;
@@ -31,6 +31,14 @@ CREATE TABLE `eselon`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of eselon
+-- ----------------------------
+INSERT INTO `eselon` VALUES (1, 'I', 'Deskripsi Eselon I', NULL, NULL);
+INSERT INTO `eselon` VALUES (2, 'II', 'Deskripsi Eselon II', NULL, NULL);
+INSERT INTO `eselon` VALUES (3, 'III', 'Deskripsi Eselon III', NULL, NULL);
+INSERT INTO `eselon` VALUES (4, 'IV', 'Deskripsi Eselon IV', NULL, NULL);
+
+-- ----------------------------
 -- Table structure for failed_jobs
 -- ----------------------------
 DROP TABLE IF EXISTS `failed_jobs`;
@@ -47,6 +55,10 @@ CREATE TABLE `failed_jobs`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of failed_jobs
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for golongan
 -- ----------------------------
 DROP TABLE IF EXISTS `golongan`;
@@ -58,6 +70,14 @@ CREATE TABLE `golongan`  (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`golongan_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of golongan
+-- ----------------------------
+INSERT INTO `golongan` VALUES (1, 'I', 'Deskripsi Golongan I', NULL, NULL);
+INSERT INTO `golongan` VALUES (2, 'II', 'Deskripsi Golongan II', NULL, NULL);
+INSERT INTO `golongan` VALUES (3, 'III', 'Deskripsi Golongan III', NULL, NULL);
+INSERT INTO `golongan` VALUES (4, 'IV', 'Deskripsi Golongan IV', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for jabatan
@@ -73,6 +93,15 @@ CREATE TABLE `jabatan`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of jabatan
+-- ----------------------------
+INSERT INTO `jabatan` VALUES (1, 'Kepala Sekretariat Utama', 'Deskripsi Jabatan Kepala Sekretariat Utama', NULL, NULL);
+INSERT INTO `jabatan` VALUES (2, 'Penyusunan Laporan Keuangan', 'Deskripsi Jabatan Penyusunan Laporan Keuangan', NULL, NULL);
+INSERT INTO `jabatan` VALUES (3, 'Surveyor Pemetaan Pertama', 'Deskripsi Jabatan Surveyor Pemetaan Pertama', NULL, NULL);
+INSERT INTO `jabatan` VALUES (4, 'Analisis Data Survey dan Pemetaan', 'Deskripsi Jabatan Analisis Data Survey dan Pemetaan', NULL, NULL);
+INSERT INTO `jabatan` VALUES (5, 'Kepala Biro Perencanaan, Kepegawaian, dan Hukum', 'Deskripsi Jabatan Kepala Biro Perencanaan, Kepegawaian, dan Hukum', NULL, NULL);
+
+-- ----------------------------
 -- Table structure for migrations
 -- ----------------------------
 DROP TABLE IF EXISTS `migrations`;
@@ -84,6 +113,20 @@ CREATE TABLE `migrations`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of migrations
+-- ----------------------------
+INSERT INTO `migrations` VALUES (1, '2014_10_12_000000_create_users_table', 1);
+INSERT INTO `migrations` VALUES (2, '2014_10_12_100000_create_password_resets_table', 1);
+INSERT INTO `migrations` VALUES (3, '2019_08_19_000000_create_failed_jobs_table', 1);
+INSERT INTO `migrations` VALUES (4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
+INSERT INTO `migrations` VALUES (5, '2022_02_12_051059_create_profiles_table', 1);
+INSERT INTO `migrations` VALUES (6, '2022_02_12_051115_create_units_table', 1);
+INSERT INTO `migrations` VALUES (7, '2022_02_12_051131_create_jabatans_table', 1);
+INSERT INTO `migrations` VALUES (8, '2022_02_12_051148_create_eselons_table', 1);
+INSERT INTO `migrations` VALUES (9, '2022_02_12_051201_create_golongans_table', 1);
+INSERT INTO `migrations` VALUES (10, '2022_02_12_051202_create_pegawai_table', 1);
+
+-- ----------------------------
 -- Table structure for password_resets
 -- ----------------------------
 DROP TABLE IF EXISTS `password_resets`;
@@ -93,6 +136,10 @@ CREATE TABLE `password_resets`  (
   `created_at` timestamp NULL DEFAULT NULL,
   INDEX `password_resets_email_index`(`email`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of password_resets
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for pegawai
@@ -113,12 +160,16 @@ CREATE TABLE `pegawai`  (
   INDEX `pegawai_jabatan_id_foreign`(`jabatan_id`) USING BTREE,
   INDEX `pegawai_eselon_id_foreign`(`eselon_id`) USING BTREE,
   INDEX `pegawai_golongan_id_foreign`(`golongan_id`) USING BTREE,
-  CONSTRAINT `pegawai_eselon_id_foreign` FOREIGN KEY (`eselon_id`) REFERENCES `eselon` (`eselon_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `pegawai_golongan_id_foreign` FOREIGN KEY (`golongan_id`) REFERENCES `golongan` (`golongan_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `pegawai_jabatan_id_foreign` FOREIGN KEY (`jabatan_id`) REFERENCES `jabatan` (`jabatan_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `pegawai_profile_id_foreign` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `pegawai_unit_id_foreign` FOREIGN KEY (`unit_id`) REFERENCES `unit` (`unit_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `pegawai_eselon_id_foreign` FOREIGN KEY (`eselon_id`) REFERENCES `eselon` (`eselon_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  CONSTRAINT `pegawai_golongan_id_foreign` FOREIGN KEY (`golongan_id`) REFERENCES `golongan` (`golongan_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  CONSTRAINT `pegawai_jabatan_id_foreign` FOREIGN KEY (`jabatan_id`) REFERENCES `jabatan` (`jabatan_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  CONSTRAINT `pegawai_profile_id_foreign` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  CONSTRAINT `pegawai_unit_id_foreign` FOREIGN KEY (`unit_id`) REFERENCES `unit` (`unit_id`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of pegawai
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for personal_access_tokens
@@ -140,6 +191,10 @@ CREATE TABLE `personal_access_tokens`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of personal_access_tokens
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for profile
 -- ----------------------------
 DROP TABLE IF EXISTS `profile`;
@@ -158,7 +213,11 @@ CREATE TABLE `profile`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`profile_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of profile
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for unit
@@ -172,6 +231,12 @@ CREATE TABLE `unit`  (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`unit_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of unit
+-- ----------------------------
+INSERT INTO `unit` VALUES (1, 'unit 1', 'Jakarta', NULL, NULL);
+INSERT INTO `unit` VALUES (2, 'unit 2', 'Bandung', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for users
@@ -189,5 +254,10 @@ CREATE TABLE `users`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of users
+-- ----------------------------
+INSERT INTO `users` VALUES (1, 'admin', 'admin@email.com', NULL, '$2y$10$9GvZG2N.ziOYkDL2fV4v/e91IdTCYwzYuU2ioXDrEMwEpsT0EuAua', NULL, NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -20,5 +20,5 @@
 	<td>admin</td>
 	<td>admin@email.com</td>
 	<td>admin123</td>
-</tr>>
+</tr>
 </table>
